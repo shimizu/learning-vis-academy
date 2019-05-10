@@ -10,17 +10,7 @@ import taxiData from './taxi.js';
 
 import Charts from './charts';
 
-const MAPBOX_TOKEN = 'pk.eyJ1Ijoic2hpbWl6dSIsImEiOiJjam95MDBhamYxMjA1M2tyemk2aHMwenp5In0.i2kMIJulhyPLwp3jiLlpsA';
-
-const INITIAL_VIEW_STATE = {
-	longitude: -74,
-	latitude: 40.7,
-	zoom: 11,
-	minZoom: 5,
-	maxZoom: 16,
-	pitch: 0,
-	bearing: 0
-};
+const MAPBOX_TOKEN = '';
 
 export default () => {
 	const [ mapboxStyle, setMapStyle ] = useState('mapbox://styles/mapbox/light-v9');
@@ -42,8 +32,10 @@ export default () => {
 		height: window.innerHeight,
 		longitude: -74,
 		latitude: 40.7,
-		zoom: 11,
-		maxZoom: 16
+		zoom: 12,
+		maxZoom: 16,
+		pitch: 45,
+		bearing: 0
 	});
 
 	const [ hover, setHover ] = useState({
@@ -121,7 +113,6 @@ export default () => {
 					})}
 					viewState={viewport}
 					onViewportChange={setViewport}
-					initialViewState={INITIAL_VIEW_STATE}
 				/>
 				<Charts {...data} highlight={onHighlight} select={onSelect} />
 			</MapGL>

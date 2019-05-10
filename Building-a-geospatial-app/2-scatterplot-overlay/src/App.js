@@ -9,16 +9,6 @@ import taxiData from './taxi.js';
 
 const MAPBOX_TOKEN = '';
 
-const INITIAL_VIEW_STATE = {
-	longitude: -74,
-	latitude: 40.7,
-	zoom: 11,
-	minZoom: 5,
-	maxZoom: 16,
-	pitch: 0,
-	bearing: 0
-};
-
 export default () => {
 	const [ mapboxStyle, setMapStyle ] = useState('mapbox://styles/mapbox/light-v9');
 	const [ points ] = useState(
@@ -95,11 +85,7 @@ export default () => {
 				</div>
 			)}
 			<MapStylePicker currentStyle={mapboxStyle} onStyleChange={setMapStyle} />
-			<LayerControls
-				settings={layerSettings}
-				propTypes={SCATTERPLOT_CONTROLS}
-				onChange={(settings) => setLayerSetting(settings)}
-			/>
+			<LayerControls settings={layerSettings} propTypes={SCATTERPLOT_CONTROLS} onChange={setLayerSetting} />
 			<MapGL
 				{...viewport}
 				mapStyle={mapboxStyle}
@@ -110,10 +96,10 @@ export default () => {
 					layers={renderLayers({
 						data: points,
 						settings: layerSettings,
-						onHover: (hover) => onHover(hover)
+						onHover: onHover
 					})}
 					viewState={viewport}
-					onViewportChange={(v) => setViewport(v)}
+					onViewportChange={setViewport}
 				/>
 			</MapGL>
 		</div>

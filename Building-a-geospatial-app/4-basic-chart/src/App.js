@@ -10,17 +10,7 @@ import taxiData from './taxi.js';
 
 import Charts from './charts';
 
-const MAPBOX_TOKEN = 'pk.eyJ1Ijoic2hpbWl6dSIsImEiOiJjam95MDBhamYxMjA1M2tyemk2aHMwenp5In0.i2kMIJulhyPLwp3jiLlpsA';
-
-const INITIAL_VIEW_STATE = {
-	longitude: -74,
-	latitude: 40.7,
-	zoom: 11,
-	minZoom: 5,
-	maxZoom: 16,
-	pitch: 0,
-	bearing: 0
-};
+const MAPBOX_TOKEN = '';
 
 export default () => {
 	const [ mapboxStyle, setMapStyle ] = useState('mapbox://styles/mapbox/light-v9');
@@ -89,7 +79,7 @@ export default () => {
 				</div>
 			)}
 			<MapStylePicker currentStyle={mapboxStyle} onStyleChange={setMapStyle} />
-			<LayerControls settings={layerSettings} propTypes={HEXAGON_CONTROLS} onChange={(s) => setLayerSetting(s)} />
+			<LayerControls settings={layerSettings} propTypes={HEXAGON_CONTROLS} onChange={setLayerSetting} />
 			<MapGL
 				{...viewport}
 				mapStyle={mapboxStyle}
@@ -100,11 +90,10 @@ export default () => {
 					layers={renderLayers({
 						data: data.points,
 						settings: layerSettings,
-						onHover: (hover) => onHover(hover)
+						onHover: onHover
 					})}
 					viewState={viewport}
-					onViewportChange={(v) => setViewport(v)}
-					initialViewState={INITIAL_VIEW_STATE}
+					onViewportChange={setViewport}
 				/>
 				<Charts {...data} />
 			</MapGL>

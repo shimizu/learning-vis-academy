@@ -12,16 +12,6 @@ import Charts from './charts';
 
 const MAPBOX_TOKEN = '';
 
-const INITIAL_VIEW_STATE = {
-	longitude: -74,
-	latitude: 40.7,
-	zoom: 11,
-	minZoom: 5,
-	maxZoom: 16,
-	pitch: 0,
-	bearing: 0
-};
-
 export default () => {
 	const [ mapboxStyle, setMapStyle ] = useState('mapbox://styles/mapbox/light-v9');
 
@@ -121,7 +111,6 @@ export default () => {
 					})}
 					viewState={viewport}
 					onViewportChange={setViewport}
-					initialViewState={INITIAL_VIEW_STATE}
 				/>
 				<Charts {...data} highlight={onHighlight} select={onSelect} />
 			</MapGL>

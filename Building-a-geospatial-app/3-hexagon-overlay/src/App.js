@@ -7,7 +7,7 @@ import { LayerControls, MapStylePicker, HEXAGON_CONTROLS } from './controls';
 import { tooltipStyle } from './style';
 import taxiData from './taxi.js';
 
-const MAPBOX_TOKEN = 'pk.eyJ1Ijoic2hpbWl6dSIsImEiOiJjam95MDBhamYxMjA1M2tyemk2aHMwenp5In0.i2kMIJulhyPLwp3jiLlpsA';
+const MAPBOX_TOKEN = '';
 
 const INITIAL_VIEW_STATE = {
 	longitude: -74,
@@ -95,7 +95,7 @@ export default () => {
 				</div>
 			)}
 			<MapStylePicker currentStyle={mapboxStyle} onStyleChange={setMapStyle} />
-			<LayerControls settings={layerSettings} propTypes={HEXAGON_CONTROLS} onChange={(s) => setLayerSetting(s)} />
+			<LayerControls settings={layerSettings} propTypes={HEXAGON_CONTROLS} onChange={setLayerSetting} />
 			<MapGL
 				{...viewport}
 				mapStyle={mapboxStyle}
@@ -106,7 +106,7 @@ export default () => {
 					layers={renderLayers({
 						data: points,
 						settings: layerSettings,
-						onHover: (hover) => onHover(hover)
+						onHover: onHover
 					})}
 					viewState={viewport}
 				/>
