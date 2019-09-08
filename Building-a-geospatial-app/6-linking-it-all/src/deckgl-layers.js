@@ -35,7 +35,7 @@ export function renderLayers(props) {
 			new ScatterplotLayer({
 				id: 'scatterplot',
 				getPosition: (d) => d.position,
-				getColor: (d) => (d.pickup ? PICKUP_COLOR : DROPOFF_COLOR),
+				getFillColor: (d) => (d.pickup ? PICKUP_COLOR : DROPOFF_COLOR),
 				getRadius: (d) => 5,
 				opacity: 0.5,
 				pickable: true,

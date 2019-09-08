@@ -10,7 +10,7 @@ import taxiData from './taxi.js';
 
 import Charts from './charts';
 
-const MAPBOX_TOKEN = '';
+const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
 export default () => {
 	const [ mapboxStyle, setMapStyle ] = useState('mapbox://styles/mapbox/light-v9');
